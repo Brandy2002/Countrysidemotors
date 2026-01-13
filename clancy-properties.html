@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Clancy Properties — Countryside Motors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/countryside-motors-high-resolution-logo-grayscale-transparent.png" alt="Countryside Motors logo" class="logo">
+        <div>
+          <h1>Clancy Properties <span class="muted">(Property Mgmt)</span></h1>
+          <p class="tag">Real estate sales & property management in Botswana</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="kids.html">Kids’ Ride-On</a>
+        <a href="batteries.html">Astro Batteries</a>
+        <a href="tanks.html">Tanks</a>
+        <a href="car-parts.html">Car & Motorcycle Parts</a>
+        <a href="clancy-properties.html" aria-current="page">Clancy Properties</a>
+        <a href="index.html#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="checkout.html">Checkout</a>
+        <button id="cartButton" class="btn-ghost" aria-expanded="false">Cart (<span id="cartCount">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="section-header">
+      <h2>Clancy Properties — Sales & Management</h2>
+      <p class="lead">Buy, rent or let — we list residential and commercial properties, and provide trusted property management services across Botswana.</p>
+      <p style="margin-top:8px;color:var(--muted);font-size:13px">Contact us for valuations, tenancy management, and tailored services for landlords and buyers.</p>
+    </div>
+
+    <div class="filters">
+      <label>For
+        <select id="filterClancyType">
+          <option value="all">All</option>
+          <option value="sale">For Sale</option>
+          <option value="rent">To Rent</option>
+        </select>
+      </label>
+      <label>Max Price
+        <select id="filterClancyPrice">
+          <option value="">No limit</option>
+          <option value="2500">P2,500</option>
+          <option value="5000">P5,000</option>
+          <option value="15000">P15,000</option>
+          <option value="50000">P50,000</option>
+          <option value="100000">P100,000</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="grid products" id="clancyGrid"></div>
+
+    <section class="section" style="margin-top:28px">
+      <h3>Services</h3>
+      <ul>
+        <li>Property Valuation & Sales</li>
+        <li>Tenant Sourcing & Screening</li>
+        <li>Rent Collection & Bill Management</li>
+        <li>Maintenance Coordination & Emergency Repairs</li>
+      </ul>
+      <p class="lead">For bulk listings or management agreements, get in touch via <a href="contact.html">the contact page</a>.</p>
+    </section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="total">P0</strong></div>
+      <div class="cart-actions">
+        <button id="clearCart" class="btn-ghost">Clear</button>
+        <a id="checkout" class="btn" href="checkout.html">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Close details">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2025 Clancy Properties — Countryside Motors</div>
+      <div class="social-muted">Proudly serving Botswana</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

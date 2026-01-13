@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kids Ride-On Cars — Countryside Motors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/countryside-motors-high-resolution-logo-grayscale-transparent.png" alt="Countryside Motors logo" class="logo">
+        <div>
+          <h1>Countryside Motors <span class="muted">Botswana</span></h1>
+          <p class="tag">Affordable. Trusted. Local.</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="kids.html" aria-current="page">Kids’ Ride-On</a>
+        <a href="batteries.html">Astro Batteries</a>
+        <a href="tanks.html">Tanks</a>
+        <a href="car-parts.html">Car & Motorcycle Parts</a>
+        <a href="clancy-properties.html">Clancy Properties</a>
+        <a href="index.html#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="checkout.html">Checkout</a>        <button id="cartButton" class="btn-ghost" aria-expanded="false">Cart (<span id="cartCount">0</span>)</button>      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="section-header">
+      <h2>Kids’ Ride-On Cars</h2>
+      <p class="lead">Safe, fun, battery-powered toys with parental controls and durable construction. Perfect for ages 2–8.</p>
+    </div>
+
+    <div class="filters">
+      <label>Battery Voltage
+        <select id="filterBattery">
+          <option value="">Any</option>
+          <option value="12">12V</option>
+          <option value="6">6V</option>
+        </select>
+      </label>
+      <label>Max Price
+        <select id="filterPrice">
+          <option value="">No limit</option>
+          <option value="1600">P1,600</option>
+          <option value="1850">P1,850</option>
+          <option value="1950">P1,950</option>
+          <option value="2100">P2,100</option>
+          <option value="2200">P2,200</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="grid products" id="kidsGrid"></div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="closeCart" aria-label="Close cart">✕</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="total">P0</strong></div>
+      <div class="cart-actions">
+        <button id="clearCart" class="btn-ghost">Clear</button>
+        <a id="checkout" class="btn" href="checkout.html">Checkout</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button id="closeModal" class="modal-close" aria-label="Close details">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2025 Countryside Motors Botswana</div>
+      <div class="social-muted">Proudly serving Botswana</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

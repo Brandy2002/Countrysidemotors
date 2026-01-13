@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CountryPetro Tanks — Countryside Motors Botswana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/countryside-motors-high-resolution-logo-grayscale-transparent.png" alt="Countryside Motors logo" class="logo">
+        <div>
+          <h1>CountryPetro <span class="muted">Tanks</span></h1>
+          <p class="tag">Portable Diesel Trailer Bowsers</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="kids.html">Kids' Ride-On</a>
+        <a href="batteries.html">Astro Batteries</a>
+        <a href="tanks.html" class="active">Tanks</a>
+        <a href="car-parts.html">Car & Motorcycle Parts</a>
+        <a href="clancy-properties.html">Clancy Properties</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="checkout.html">Checkout</a>
+        <button id="cartButton" class="btn-ghost" aria-expanded="false">Cart (<span id="cartCount">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero tanks-hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h2>CountryPetro Portable Diesel Trailer Tanks</h2>
+          <p>Tailor-made trailers for refilling farming machinery, generators, fleets, mining and construction equipment — built to suit your needs with six months workmanship warranty.</p>
+          <div class="hero-cta">
+            <a href="#catalog" class="btn">View Tanks Catalogue</a>
+            <a href="contact.html" class="btn btn-outline">Request Quote</a>
+          </div>
+        </div>
+        <img class="hero-image" src="assets/images/tanker-trailer.jpg" alt="CountryPetro diesel trailer" />
+      </div>
+    </section>
+
+    <section id="about" class="section container about">
+      <div class="section-header">
+        <h2>About CountryPetro Tanks</h2>
+        <p class="lead">COUNTRYPETRO DIESEL Trailer Bowsers are developed in support of citizen empowerment programs and can be customised for individuals and businesses.</p>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <h3>Key Specifications</h3>
+          <ul>
+            <li>Red Dot Registered</li>
+            <li>Chassis built with channel, mild steel & stainless steel tanks</li>
+            <li>Single or double axle options, braked with spring blades</li>
+            <li>1" flowmeter, 4m diesel hose & nozzle, 12v pump (40l or 70l p/m) or hand pump</li>
+            <li>4.5kg fire extinguisher, signage, registration documents included</li>
+          </ul>
+          <p><strong>Delivery:</strong> 7–14 working days</p>
+        </div>
+
+        <div>
+          <h3>Capacity & Pricing</h3>
+          <div class="tanks-pricing">
+            <pre>
+500L   P45,630.53
+1000L  P66,883.45
+1500L  P74,420.92
+2000L  P86,148.32
+2500L  P99,443.49
+            </pre>
+          </div>
+          <p>Get your free quote — <strong>WhatsApp:</strong> +267 7231 8672 or email <a href="mailto:countrysidesalesbw@gmail.com">countrysidesalesbw@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section container">
+      <div class="section-header">
+        <h2>Tanks Catalogue</h2>
+        <p class="lead">Select a model to view more details or request a quote.</p>
+      </div>
+
+      <div id="tanksGrid" class="product-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2025 Countryside Motors Botswana</div>
+      <div class="social-muted">Proudly serving Botswana</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ensure product rendering call for tanks page
+    document.addEventListener('DOMContentLoaded', function(){ if (typeof renderProducts === 'function') renderProducts('tanks'); });
+  </script>
+</body>
+</html>

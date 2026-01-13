@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Countryside Motors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/countryside-motors-high-resolution-logo-grayscale-transparent.png" alt="Countryside Motors logo" class="logo">
+        <div>
+          <h1>Countryside Motors <span class="muted">Botswana</span></h1>
+          <p class="tag">Affordable. Trusted. Local.</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="kids.html">Kids’ Ride-On</a>
+        <a href="batteries.html">Astro Batteries</a>
+        <a href="car-parts.html">Car & Motorcycle Parts</a>        <a href="clancy-properties.html">Clancy Properties</a>        <a href="index.html#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="checkout.html" aria-current="page">Checkout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="section-header">
+      <h2>Checkout</h2>
+      <p class="lead">Complete your order. We support Cash-on-Delivery and Bank Transfer options tailored for Botswana customers.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns: 1fr 360px; gap:24px;">
+      <div>
+        <form id="checkoutForm" class="card">
+          <h3>Shipping Address</h3>
+          <label>Full name<br><input type="text" id="name" required></label>
+          <label>Phone number<br><input type="tel" id="phone" required></label>
+          <label>Email (optional)<br><input type="email" id="email"></label>
+          <label>Address line 1<br><input type="text" id="address1" required></label>
+          <label>City / District<br>
+            <select id="district" required>
+              <option value="">Select district</option>
+              <option value="gaborone">Gaborone</option>
+              <option value="francistown">Francistown</option>
+              <option value="maun">Maun</option>
+              <option value="serowe">Serowe</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <h3>Shipping Options</h3>
+          <div>
+            <label><input type="radio" name="shipping" value="city" checked> City delivery (Gaborone/Francistown) — P100</label><br>
+            <label><input type="radio" name="shipping" value="town"> Town delivery (regional towns) — P150</label><br>
+            <label><input type="radio" name="shipping" value="remote"> Remote delivery — P250</label>
+          </div>
+
+          <h3>Payment Method</h3>
+          <div>
+            <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label><br>
+            <label><input type="radio" name="payment" value="bank"> Bank Transfer</label><br>
+            <label><input type="radio" name="payment" value="mobile"> Mobile Payment</label>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+            <button type="submit" class="btn">Place Order</button>
+            <a href="index.html" class="btn btn-outline">Continue Shopping</a>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card">
+        <h3>Order Summary</h3>
+        <ul id="summaryItems" style="list-style:none;padding:0;margin:0 0 12px 0"></ul>
+        <div style="display:flex;justify-content:space-between;margin-top:12px">
+          <div>Subtotal</div>
+          <div id="subtotal">P0</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px">
+          <div>Shipping</div>
+          <div id="shipping">P0</div>
+        </div>
+        <hr style="margin:12px 0">
+        <div style="display:flex;justify-content:space-between;font-weight:800">
+          <div>Total</div>
+          <div id="grandTotal">P0</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2025 Countryside Motors Botswana</div>
+      <div class="social-muted">Contact: sales@countrysidemotors.bw</div>
+    </div>
+  </footer>
+
+<script>
+// Checkout page script
+const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+function formatCurrency(v){ return `P${v}`; }
+
+function renderSummary(){
+  const summary = document.getElementById('summaryItems');
+  const subtotalEl = document.getElementById('subtotal');
+  summary.innerHTML = '';
+  let subtotal = 0;
+  cart.forEach(it=>{
+    const li = document.createElement('li');
+    li.style.padding = '8px 0';
+    li.innerHTML = `<div style="display:flex;justify-content:space-between"><span>${it.name} × ${it.qty}</span><span>${formatCurrency(it.qty * it.price)}</span></div>`;
+    summary.appendChild(li);
+    subtotal += it.qty * it.price;
+  });
+  subtotalEl.textContent = formatCurrency(subtotal);
+  updateTotals();
+}
+
+function getShippingFee(){
+  const sel = document.querySelector('input[name="shipping"]:checked').value;
+  if(sel === 'city') return 100;
+  if(sel === 'town') return 150;
+  return 250;
+}
+
+function updateTotals(){
+  const subtotal = cart.reduce((s,i)=>s + i.price*i.qty,0);
+  const shipping = getShippingFee();
+  document.getElementById('shipping').textContent = formatCurrency(shipping);
+  document.getElementById('grandTotal').textContent = formatCurrency(subtotal + shipping);
+}
+
+// Bind shipping option changes
+document.querySelectorAll('input[name="shipping"]').forEach(i => i.addEventListener('change', updateTotals));
+
+// Form submit
+document.getElementById('checkoutForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  if(cart.length === 0){ alert('Your cart is empty.'); window.location = 'index.html'; return; }
+
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const addr = document.getElementById('address1').value.trim();
+  const district = document.getElementById('district').value;
+
+  if(!name || !phone || !addr || !district){ alert('Please complete the shipping form.'); return; }
+
+  const payment = document.querySelector('input[name="payment"]:checked').value;
+  const shippingFee = getShippingFee();
+  const subtotal = cart.reduce((s,i)=>s + i.price*i.qty,0);
+  const total = subtotal + shippingFee;
+
+  // Prepare order payload
+  const order = {
+    customer:{name,phone,addr,district},
+    items:cart,
+    payment,
+    shipping:shippingFee,
+    total,
+    createdAt: new Date().toISOString()
+  };
+
+  // Try to POST to local mock API, fall back to local simulation when unavailable
+  fetch('/api/orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order)
+  }).then(async res => {
+    if(!res.ok) throw new Error('Server error');
+    const data = await res.json();
+    alert('Order received. Reference: ' + (data.id || 'N/A') + '. We will contact you to confirm delivery and payment.');
+    localStorage.removeItem('cart');
+    window.location = 'index.html';
+  }).catch(err => {
+    console.warn('Order API failed, falling back to local simulation', err);
+    alert('Thank you! Your order has been placed (offline). We will contact you to confirm delivery and payment.');
+    localStorage.removeItem('cart');
+    window.location = 'index.html';
+  });
+});
+
+renderSummary();
+updateTotals();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+ADDING PRODUCT IMAGES TO COUNTRYSIDE MOTORS
+=============================================
+
+The website is configured to display real product images. To add them, save the following files to the assets/images/ folder:
+
+KIDS RIDE-ON CARS:
+1. ride-jeep.jpg        <- Black AMG-style Jeep (P2,200)
+2. ride-convertible.jpg <- White Mercedes Convertible (P1,950)
+3. ride-porsche.jpg     <- Black Porsche Sports Car (P2,100)
+
+ASTRO BATTERIES:
+1. astro-24v-60ah.jpg   <- Astro 24V 60Ah LiFePO4 (P3,200)
+2. astro-12v-100ah.jpg  <- Astro 12V 100Ah LiFePO4 (P2,400)
+
+FOLDER STRUCTURE:
+assets/
+  images/
+    ride-jeep.jpg
+    ride-convertible.jpg
+    ride-porsche.jpg
+    astro-24v-60ah.jpg
+    astro-12v-100ah.jpg
+    hilux-upgrade.jpg   <- Hilux Revo to 2021 Rocco upgrade kit (banner/gallery image)
+    front-bumper.jpg     <- Front bumper
+    fog-lamps.jpg        <- Fog lamps (includes wiring)
+    headlamp-leds.jpg    <- Headlamp set (LED, set of two)
+    taillamps-led.jpg    <- Tail lamps (LED, set of two)
+    grill-normal.jpg     <- OEM style front grill
+    grill-aftermarket.jpg <- Aftermarket grill with TOYOTA lettering
+    bonnet-guard.jpg     <- Black bonnet guard
+
+Once you've added the images, reload the website at:
+- http://localhost:3000 (if using the mock server)
+- Or open index.html directly in your browser
+
+The product pages (kids.html, batteries.html, product.html) will automatically display the images.

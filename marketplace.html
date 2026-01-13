@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketplace — Countryside Motors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/images/countryside-motors-high-resolution-logo-grayscale-transparent.png" alt="Countryside Motors logo" class="logo">
+        <div>
+          <h1>Marketplace <span class="muted">Countryside Motors</span></h1>
+          <p class="tag">Buy and sell — vehicles, parts & accessories</p>
+        </div>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="marketplace.html" aria-current="page">Marketplace</a>
+        <a href="kids.html">Kids’ Ride-On</a>
+        <a href="batteries.html">Astro Batteries</a>
+        <a href="tanks.html">Tanks</a>
+        <a href="car-parts.html">Car & Motorcycle Parts</a>
+        <a href="clancy-properties.html">Clancy Properties</a>
+        <a href="contact.html">Contact</a>
+        <button id="cartButton" class="btn-ghost" aria-expanded="false">Cart (<span id="cartCount">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="section-header">
+      <h2>Marketplace</h2>
+      <p class="lead">Browse items across all categories. Use filters to narrow results and sort to find the best match.</p>
+    </div>
+
+    <div class="marketplace-controls">
+      <div class="filters">
+        <label>Category
+          <select id="filterCategory">
+            <option value="">All</option>
+            <option value="kids">Kids’ Ride-On</option>
+            <option value="battery">Astro Batteries</option>
+            <option value="tanks">Tanks</option>
+            <option value="parts">Car & Motorcycle Parts</option>
+            <option value="clancy">Clancy Properties</option>
+          </select>
+        </label>
+        <label>Condition
+          <select id="filterCondition">
+            <option value="">All</option>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+          </select>
+        </label>
+        <label>Price Min
+          <input id="filterMin" type="number" placeholder="0" min="0">
+        </label>
+        <label>Price Max
+          <input id="filterMax" type="number" placeholder="No limit" min="0">
+        </label>
+        <label>Sort
+          <select id="sortSelect">
+            <option value="best">Best match</option>
+            <option value="price_asc">Price: low to high</option>
+            <option value="price_desc">Price: high to low</option>
+            <option value="newest">Newest</option>
+          </select>
+        </label>
+        <label style="flex:1">
+          <input id="searchQuery" type="search" placeholder="Search products, e.g., CT 1204" style="width:100%">
+        </label>
+        <button id="applyFilters" class="btn">Apply</button>
+      </div>
+    </div>
+
+    <div id="marketplaceBanner" style="margin-bottom:12px;color:var(--muted);font-size:13px"></div>
+    <div class="marketplace-grid" id="marketplaceGrid" role="list"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; 2026 Countryside Motors Botswana</div>
+      <div class="social-muted">Proudly serving Botswana</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="marketplace.js"></script>
+</body>
+</html>
